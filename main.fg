@@ -1,0 +1,50 @@
+// fogulang_module — a small library published on GitHub, used to check that
+// Fogu imports packages from a git URL:
+//
+//   fogu add microaitec-deploy/fogulang_module
+//   import mod from "fogulang_module"
+//   import { Counter } from "fogulang_module"
+//   print(mod.greet("Ana"))            // Hello, Ana!
+
+export const version = "0.1.0"
+
+// A greeting; `lang` picks the language ("en", "pt").
+export fn greet(name: str, lang = "en") {
+    return match lang {
+        "pt" => `Olá, ${name}!`
+        _ => `Hello, ${name}!`
+    }
+}
+
+// "Hello World  Fogu" -> "hello-world-fogu"
+export fn slug(text: str) {
+    const words = text.lower().split(" ").filter(fn(w) { return w != "" })
+    return words.join("-")
+}
+
+// Sum of a list of numbers; an empty list sums to 0.
+export fn sum(xs) {
+    let total = 0
+    for x in xs { total = total + x }
+    return total
+}
+
+// A counter with a step: `new Counter(5)`.
+export struct Counter {
+    value: int
+    step: int
+
+    new(step = 1) {
+        this.value = 0
+        this.step = step
+    }
+
+    fn next() {
+        this.value = this.value + this.step
+        return this.value
+    }
+
+    fn reset() {
+        this.value = 0
+    }
+}

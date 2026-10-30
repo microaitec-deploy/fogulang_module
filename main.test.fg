@@ -1,0 +1,25 @@
+import { test, expect } from "fogu:test"
+import mod from "./main.fg"
+import { Counter } from "./main.fg"
+
+test("greet", () => {
+    expect(mod.greet("Ana")).toBe("Hello, Ana!")
+    expect(mod.greet("Ana", "pt")).toBe("Olá, Ana!")
+})
+
+test("slug", () => {
+    expect(mod.slug("Hello World  Fogu")).toBe("hello-world-fogu")
+})
+
+test("sum", () => {
+    expect(mod.sum([1, 2, 3])).toBe(6)
+    expect(mod.sum([])).toBe(0)
+})
+
+test("Counter", () => {
+    const c = new Counter(5)
+    c.next()
+    expect(c.next()).toBe(10)
+    c.reset()
+    expect(c.value).toBe(0)
+})

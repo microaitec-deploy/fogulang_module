@@ -1,0 +1,11 @@
+{
+  "name": "fogulang_module",
+  "version": "0.1.0",
+  "description": "A small Fogu library published on GitHub: greetings, a counter struct and a slug helper. Used to verify `fogu add user/repo` imports from a git URL",
+  "entry": "main.fg",
+  "license": "MIT",
+  "scripts": {
+    "test": "fogu test"
+  },
+  "dependencies": {}
+}
